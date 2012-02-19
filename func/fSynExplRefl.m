@@ -12,7 +12,7 @@ function [x,t,seismogram]=fSynExplRefl(dx,dtstep,dt,tmax,vmodel,x,bpfpoint)
 % set grid size, time step, sample rate and recording length
 [m,n]=size(vmodel);
 %dtstep=.001;dt=.004;tmax=2;
-
+%tmax=2*zmax/vlow; %maximum time
 % x and z coordinates of the model
 %x=[0:n-1]*dx;z=[0:m-1]*dz;
 

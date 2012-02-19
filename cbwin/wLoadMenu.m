@@ -67,6 +67,18 @@ synm=uimenu(mainwin,'Label','SyntheticSeismic');
 
     sSaveSynth=uimenu(synm,'Label','Save Syntetic');
         set(sSaveSynth,'Callback','dSaveSynthetic;')
+
+%menu-menu dibawah vsp synthetic
+%nomenclature code=v
+synm=uimenu(mainwin,'Label','VSPModeling'); 
+    sExplRefl=uimenu(synm,'Label','GenerateReceiver');
+        set(sExplRefl,'Callback','cb_vGenerateReceiver;');
+    sExplRefl=uimenu(synm,'Label','LoadReceiver');
+        set(sExplRefl,'Callback','cb_vLoadReceiver;');
+    sSaveSynth=uimenu(synm,'Label','Acoustic FD');
+        set(sSaveSynth,'Callback','dSaveSynthetic;')
+    sSaveSynth=uimenu(synm,'Label','Save Syntetic');
+        set(sSaveSynth,'Callback','dSaveSynthetic;')
  
 %menu-menu dibawah Processing
 %nomenclature code=p
