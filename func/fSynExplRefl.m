@@ -1,4 +1,4 @@
-function [x,t,seismogram]=fSynExplRefl(dx,dtstep,dt,tmax,vmodel,x,bpfpoint)
+function [trc,t,seismogram]=fSynExplRefl(dx,dtstep,dt,tmax,vmodel,x,bpfpoint)
 
 % Make stacked section of velocity model using exploding reflector from
 % CREWES
@@ -18,8 +18,8 @@ function [x,t,seismogram]=fSynExplRefl(dx,dtstep,dt,tmax,vmodel,x,bpfpoint)
 
 [seismogram,seis,t]=afd_explode(dx,dtstep,dt,tmax,vmodel,x,zeros(size(x)),...
     bpfpoint,0,2);
-
-seisimage(seismogram,t,x);
+trc=x;
+seisimage(seismogram,t,trc);
 
 % Save output data (optional)
 %save 'SaltDome_explRefl' seismogram t x

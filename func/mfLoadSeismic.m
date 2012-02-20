@@ -1,4 +1,4 @@
-function [x,t,seismogram,dt]=mfLoadSeismic(plot)
+function [trc,t,seismogram,dt]=mfLoadSeismic(plot)
 
 [filename, pathname] = uigetfile('*.mat', 'Load Model MAT File');
 readfilein=strcat(pathname,filename);
@@ -8,11 +8,10 @@ clear pathname;
 %loading model MAT file
 load(readfilein);
 
-
 %imagesc(1:length(dataout),t,dataout);
 %title('Rough Display');
 if(plot==1)
-    plotimage(x,t,seismogram);
+    plotimage(t,trc,seismogram);
     title('your synthetic seismic');
     set(gcf,'Color','white')
 end

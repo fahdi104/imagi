@@ -1,6 +1,6 @@
-function dImageSynthetic(x,t,seismogram);
+function dImageSynthetic(trc,t,seismogram);
 
-imagesc(x,t,seismogram)
+imagesc(trc,t,seismogram)
 title('Synthetic','FontSize',12,'FontWeight','bold')
 xlabel('Offset');
 ylabel('Time');

@@ -7,11 +7,20 @@ function loadMenu(mainwin)
 filem=uimenu(mainwin,'Label','File'); 
     mLoadModel=uimenu(filem,'Label','Load VelModel');
        set(mLoadModel,'Callback','[x,z,vmodel,dx,dz]=mfLoadModel(1);')
-    
+   
     mLoadSeismic=uimenu(filem,'Label','Load SeismicStack');
-        set(mLoadSeismic,'Callback','[x,t,seismogram,dt]=mfLoadSeismic(1); ');
+        set(mLoadSeismic,'Callback','[trc,t,seismogram,dt]=mfLoadSeismic(1); ');
+        set(mLoadSeismic,'Separator','On');
     mImageSeismic=uimenu(filem,'Label','Image SeismicStack');
-        set(mImageSeismic,'Callback','dImageSynthetic(x,t,seismogram); ');
+        set(mImageSeismic,'Callback','dImageSynthetic(trc,t,seismogram); ');
+        set(mLoadModel,'Separator','On');
+        
+    mLoadVSP=uimenu(filem,'Label','Load VSPStack');
+        set(mLoadVSP,'Callback','[trc,t,seismogram,dt]=mfLoadVSP(1); ');
+        set(mLoadVSP,'Separator','On');
+    mImageVSP=uimenu(filem,'Label','Image VSPStack');
+        set(mImageVSP,'Callback','dImageVSP(trc,t,seismogram); ');
+        
     mClearScreen=uimenu(filem,'Label','Clear Screen');
         set(mClearScreen,'Callback','cla reset; fAdvImagi');
         set(mClearScreen,'Separator','On');
@@ -73,10 +82,11 @@ synm=uimenu(mainwin,'Label','SyntheticSeismic');
 synm=uimenu(mainwin,'Label','VSPModeling'); 
     sExplRefl=uimenu(synm,'Label','GenerateReceiver');
         set(sExplRefl,'Callback','cb_vGenerateReceiver;');
+    %this callback is not good
     sExplRefl=uimenu(synm,'Label','LoadReceiver');
-        set(sExplRefl,'Callback','cb_vLoadReceiver;');
+        set(sExplRefl,'Callback','clear rec;[rec]=cb_vLoadReceiver;hold on;    plot(rec(:,1),rec(:,2),''rv'');');
     sSaveSynth=uimenu(synm,'Label','Acoustic FD');
-        set(sSaveSynth,'Callback','dSaveSynthetic;')
+        set(sSaveSynth,'Callback','cb_vVSPShotRec(rec);')
     sSaveSynth=uimenu(synm,'Label','Save Syntetic');
         set(sSaveSynth,'Callback','dSaveSynthetic;')
  
